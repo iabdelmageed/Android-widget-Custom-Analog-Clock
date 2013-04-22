@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.islam.clock"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="7"
+        android:targetSdkVersion="17" />
+
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name" >
+        <receiver android:name="ClockWidgetProvider" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/clockwidgetproviderinfo" />
+        </receiver>
+
+        <activity
+            android:name=".ClockWidgetConfig"
+            android:label="Choose Clock Theme" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ClockDisplayOptions"
+            android:label="Choose Clock Display Options" />
+        <activity
+            android:name=".SkinConfiguration"
+            android:label="Choose Theme Skin" />
+
+        <receiver android:name="AlarmClass" />
+
+        <service
+            android:name=".WidgetService"
+            android:enabled="true" >
+        </service>
+    </application>
+
+</manifest>
